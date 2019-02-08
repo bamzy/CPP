@@ -37,6 +37,6 @@ void randomAntsMove(const int nmoves,const int* jmoves, const int* imoves, int t
         calculateAntStats(number_of_ants,  length,  total_ants, nmin, nmax);
 		
 	//Print result to the screen
-        //printReport(t+1,total_ants, nmin, nmax);
+        printReport(t+1,total_ants, nmin, nmax);
 }
 

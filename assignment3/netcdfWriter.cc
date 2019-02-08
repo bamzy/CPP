@@ -16,10 +16,11 @@ inline bool fileExist (const std::string& name) {
 int netcdfWriter(rarray<int,2>  new_number_of_ants, int length){
 	try
 	{  	   
-	
+		
 		if (fileExist(FILE_NAME)){
-			// Create the file.
+			// append to an existing file
 			NcFile dataFile(FILE_NAME, NcFile::write);
+			// Create netCDF dimensions
 			NcDim xDim = dataFile.addDim("x", length);
 			NcDim yDim = dataFile.addDim("y", length);
 
@@ -33,6 +34,7 @@ int netcdfWriter(rarray<int,2>  new_number_of_ants, int length){
 
 		}
 		else {
+			//create  new netCDF file
 			NcFile dataFile(FILE_NAME, NcFile::replace);
 			// Create netCDF dimensions
 			NcDim xDim = dataFile.addDim("x", length);
@@ -51,17 +53,7 @@ int netcdfWriter(rarray<int,2>  new_number_of_ants, int length){
 	{e.what();
 		return NC_ERR;
 	}
-	
-	
-
-	// Write the data to the file. Although netCDF supports
-	// reading and writing subsets of data, in this case we write all
-	// the data in one operation.
-	
-
-
-
-	cout << "*** SUCCESS writing  file " << FILE_NAME << "!" << endl;
+	return 0;
 
 }
 

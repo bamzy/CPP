@@ -92,6 +92,7 @@ int main()
 	// run time steps
 	for (int t = 0; t < time_steps; t++) {
 		if (t%file_report_interval == 0){
+			//print every 1000 data into a netCDF file
 			netcdfWriter(number_of_ants,length);
 		}
 	       // This function randomely moves ants on the table 
